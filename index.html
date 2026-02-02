@@ -158,6 +158,14 @@
     .hero-panel p{
       margin: 0;
     }
+    .flow-list{
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+    .flow-list li{
+      margin-bottom: 6px;
+    }
     .cards{
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -255,27 +263,33 @@
       <div class="logo">Zollman NetLogo</div>
       <nav class="nav">
         <a href="toy_example_formulation.html">Toy Example</a>
-        <a href="inital_glance.html">Initial Glance</a>
+        <a href="inital_glance.html">Widget Demo</a>
         <a href="two_agents.html">Two Agents</a>
       </nav>
     </header>
 
     <section class="hero">
       <div class="hero-card">
-        <h1 class="hero-title">Collective learning, three ways.</h1>
+        <h1 class="hero-title">From paper to NetLogo.</h1>
         <p class="hero-sub">
-          A compact hub for the Zollman NetLogo models and a quick refresher on the
-          toy example formulation.
+          This mini-site supports a first NetLogo lesson based on Zollman's
+          "The communication structure of epistemic communities". The goal is to
+          formalize the toy example, learn interface wiring, and then run the
+          two-agent model.
         </p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="toy_example_formulation.html">Start with the toy example</a>
-          <a class="btn btn-secondary" href="two_agents.html">Jump to the two-agent model</a>
+          <a class="btn btn-primary" href="toy_example_formulation.html">Step 1: Formalize the toy example</a>
+          <a class="btn btn-secondary" href="inital_glance.html">Step 2: See widget wiring</a>
         </div>
       </div>
       <div class="hero-panel">
-        <h2>At a glance</h2>
-        <p>Each page opens a different view of the same core idea: how evidence flows through a network.</p>
-        <p>Use the cards below to explore setup, interface, and multi-agent dynamics.</p>
+        <h2>Course flow</h2>
+        <p>Read the paper first, then move through the pages in order:</p>
+        <ul class="flow-list">
+          <li>Page 1 formalizes states, actions, results, and beliefs.</li>
+          <li>Page 2 shows the minimal NetLogo code and manual widget setup.</li>
+          <li>Page 3 implements the two-agent experiment in NetLogo.</li>
+        </ul>
       </div>
     </section>
 
@@ -283,25 +297,26 @@
       <a class="card" href="toy_example_formulation.html">
         <span class="tag">Page 01</span>
         <h3>Toy Example Formulation</h3>
-        <p>Definitions, actions, and the A2 outcome schema with the new visual reference.</p>
+        <p>Translate the toy example into explicit variables so you can write better prompts and models.</p>
         <span class="link">Open the formulation</span>
       </a>
       <a class="card" href="inital_glance.html">
         <span class="tag">Page 02</span>
-        <h3>Initial Glance</h3>
-        <p>NetLogo interface ready for quick inspection and parameter checks.</p>
-        <span class="link">Open initial glance</span>
+        <h3>Initial Glance (Widgets)</h3>
+        <p>Minimal NetLogo code that shows how interface widgets connect to the model.</p>
+        <span class="link">Open widget demo</span>
       </a>
       <a class="card" href="two_agents.html">
         <span class="tag">Page 03</span>
         <h3>Two Agents</h3>
-        <p>Focused on pairwise updates and how competing treatments propagate.</p>
+        <p>The full two-agent model derived from the paper's toy example.</p>
         <span class="link">Open two agents</span>
       </a>
     </section>
 
     <section class="info-strip">
-      <div><strong>Tip:</strong> Open a model page in a new tab if you want the homepage handy for navigation.</div>
+      <div><strong>Why page 2?</strong> NetLogo Web cannot auto-create Interface widgets from pasted code, so we practice manual widget wiring with the simplest example.</div>
+      <div><strong>Suggested order:</strong> Toy example &rarr; Initial glance &rarr; Two agents.</div>
       <div>Files are self-contained and run directly in your browser.</div>
     </section>
   </div>
