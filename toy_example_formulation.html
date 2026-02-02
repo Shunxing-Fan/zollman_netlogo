@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Toy Example Formulation (Two Treatments)</title>
+  <style>
+    :root{
+      --bg:#0b0f17;
+      --text:#e5e7eb;
+      --muted:#9ca3af;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    body{
+      margin:0;
+      background:linear-gradient(180deg,var(--bg),#050712);
+      color:var(--text);
+      font-family:var(--sans);
+      line-height:1.65;
+    }
+    .wrap{
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 28px 18px 60px;
+    }
+    header{
+      margin-bottom: 18px;
+      padding: 18px;
+      background: rgba(17,24,39,0.7);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+    }
+    .header-row{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .nav-link{
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.9rem;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 999px;
+      padding: 6px 12px;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+    .nav-link:hover{
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.3);
+    }
+    h1{
+      margin: 0;
+      font-size: 1.45rem;
+      letter-spacing: 0.2px;
+    }
+    section{
+      margin-top: 14px;
+      padding: 18px;
+      background: rgba(17,24,39,0.65);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    }
+    h2{
+      margin:0 0 10px;
+      font-size: 1.15rem;
+      color: #f3f4f6;
+    }
+    hr{
+      border:0;
+      border-top:1px solid rgba(255,255,255,0.08);
+      margin: 14px 0;
+    }
+    ul{ margin: 8px 0 0 18px; }
+    ol{ margin: 8px 0 0 20px; }
+    .note{
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+    .result-figure{
+      margin: 16px 0 0;
+      padding: 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(3,7,18,0.55);
+      display: grid;
+      gap: 8px;
+    }
+    .result-figure img{
+      width: 100%;
+      max-width: 620px;
+      height: auto;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+      justify-self: center;
+      background: #0b0f17;
+    }
+    .result-figure figcaption{
+      color: var(--muted);
+      font-size: 0.9rem;
+      text-align: center;
+    }
+  </style>
+
+  <!-- MathJax for LaTeX rendering -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="header-row">
+        <h1>Toy Example Formulation (Two Treatments)</h1>
+        <a class="nav-link" href="index.html">Back to Home</a>
+      </div>
+    </header>
+
+    <section>
+      <h2>World states</h2>
+      <p>Let the (unknown) world state be one of:</p>
+      <ul>
+        <li>\(\phi_1\): <b>old</b> treatment is better</li>
+        <li>\(\phi_2\): <b>new</b> treatment is better</li>
+      </ul>
+      <p>State space:</p>
+      \[
+      \Phi = \{\phi_1,\phi_2\}.
+      \]
+    </section>
+
+    <section>
+      <h2>Actions</h2>
+      \[
+      \mathcal{A}=\{A_1,A_2\}.
+      \]
+      <ul>
+        <li>\(A_1\): <b>do nothing / keep old</b> (no informative data is generated)</li>
+        <li>\(A_2\): <b>use new</b> (may generate an informative result)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Results (only if taking \(A_2\))</h2>
+      <p>If an agent takes \(A_2\), the experiment may produce one of two results:</p>
+      \[
+      \{+,-\}.
+      \]
+      <p>Likelihood model:</p>
+      \[
+      \Pr(+\mid \phi_2)=0.6,\quad \Pr(-\mid \phi_2)=0.4
+      \]
+      \[
+      \Pr(+\mid \phi_1)=0.4,\quad \Pr(-\mid \phi_1)=0.6
+      \]
+      <p class="note">Interpretation: if the new treatment is truly better (\(\phi_2\)), a positive result is more likely.</p>
+      <figure class="result-figure">
+        <img src="positive_negative.png" alt="Positive and negative result schematic" loading="lazy" />
+        <figcaption>Positive and negative outcomes when taking A2.</figcaption>
+      </figure>
+    </section>
+
+    <section>
+      <h2>Beliefs</h2>
+      <p>Each agent \(i\) maintains a belief that the new treatment is better:</p>
+      \[
+      p_i = \Pr(\phi_2).
+      \]
+    </section>
+
+    <section>
+      <h2>Decision rule (myopic threshold)</h2>
+      <p>At each round, agent \(i\) chooses:</p>
+      <ul>
+        <li>choose \(A_2\) if \(p_i &gt; 0.5\)</li>
+        <li>choose \(A_1\) otherwise</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Loop (one round)</h2>
+      <ol>
+        <li><b>Choose action</b> \(A_1\) or \(A_2\).</li>
+        <li><b>If \(A_2\)</b>, <b>observe</b> a result in \(\{+,-\}\).</li>
+        <li><b>Update beliefs</b> for self (and possibly after hearing others' results).</li>
+      </ol>
+    </section>
+  </div>
+</body>
+</html>
