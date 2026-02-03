@@ -180,7 +180,7 @@
     </section>
 
     <section>
-      <h2>Decision rule (myopic threshold)</h2>
+      <h2>Decision rule</h2>
       <p>At each round, agent \(i\) chooses:</p>
       <ul>
         <li>choose \(A_2\) if \(p_i &gt; 0.5\)</li>
@@ -191,9 +191,9 @@
     <section>
       <h2>Loop (one round)</h2>
       <ol>
-        <li><b>Choose action</b> \(A_1\) or \(A_2\).</li>
-        <li><b>If \(A_2\)</b>, <b>observe</b> a result in \(\{+,-\}\).</li>
-        <li><b>Update beliefs</b> for self (and possibly after hearing others' results).</li>
+        <li>Each agent chooses action \(A_1\) or \(A_2\) based on the decision rule and their own belief.</li>
+        <li>Agents who choose \(A_2\) sample one result from the distribution: \(\{+,-\}\).</li>
+        <li>Agents update beliefs using their own result (if they chose \(A_2\)) and the results reported by connected agents who also chose \(A_2\).</li>
       </ol>
     </section>
   </div>
