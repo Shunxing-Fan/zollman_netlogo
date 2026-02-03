@@ -193,7 +193,7 @@
       <ol>
         <li>Each agent chooses action \(A_1\) or \(A_2\) based on the decision rule and their own belief.</li>
         <li>Each agent who chooses \(A_2\) samples one result from the distribution: \(\{+,-\}\).</li>
-        <li>Agents update beliefs using their own result (if they chose \(A_2\)) and the results reported by connected agents who also chose \(A_2\).</li>
+        <li>Each agent updates its belief by incorporating (i) its own result if it chose \(A_2\), and (ii) any results reported by connected agents who chose \(A_2\).</li>
       </ol>
     </section>
   </div>
